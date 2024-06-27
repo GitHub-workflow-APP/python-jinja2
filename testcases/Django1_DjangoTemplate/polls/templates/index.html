@@ -1,0 +1,13 @@
+hi
+<p> safe var1: {{ var1 }}</p>
+<p> safe var2: {{ var2 }}</p>
+<p> unsafe var1: {{ var1 |safe}}</p>
+<p> unsafe var2: {{ var2 |safe}}</p>    <!-- CWEID 80 -->
+<p> safe var1: {{ var1 }}</p>
+<p> safe var2: {{ var2 }}</p>
+{% autoescape off %}
+<p> unsafe var1: {{ var1 }}</p>
+<p> unsafe var2: {{ var2 }}</p>     <!-- CWEID 80 -->
+{% endautoescape %}
+<p> safe var1: {{ var1 }}</p>
+<p> safe var2: {{ var2 }}</p>

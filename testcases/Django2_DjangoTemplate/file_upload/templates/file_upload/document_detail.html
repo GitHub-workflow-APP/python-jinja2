@@ -1,0 +1,19 @@
+{% extends 'file_upload/base.html' %}
+
+{% block content %}
+
+<h1>Uploaded files:</h1>
+
+
+    {% if documents %}
+        <ul>
+            {% for document in documents %}
+                <li><a href="{{ document.document.url }}">{{ document.document.name }}</a></li> {# CWEID CONTENT FROM UPLOADED FILE #}
+                <li><a href="{{ document.image.url }}">{{ document.image.name }}</a></li> {# CWEID CONTENT FROM UPLOADED FILE #}
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>No documents.</p>
+    {% endif %}
+
+{% endblock %}

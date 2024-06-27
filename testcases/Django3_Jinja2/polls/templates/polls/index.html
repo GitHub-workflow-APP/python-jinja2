@@ -1,0 +1,5 @@
+{{ tainted_name | safe }} {# CWEID 80 #}
+{{ tainted_name }} {# FP CWEID 80 #}
+{% autoescape off %}
+{{ tainted_name }} {# CWEID 80 #}
+{% endautoescape  %}

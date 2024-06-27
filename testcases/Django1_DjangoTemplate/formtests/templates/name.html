@@ -1,0 +1,12 @@
+<form action="/formtests/name/" method="post">
+    {% csrf_token %}
+
+{% for field in form %}
+    <div class="fieldWrapper">
+        {{ field.errors }}
+        {{ field.value | safe }}    <!-- CWEID 80 -->
+        {{ field.label_tag }} {{ field }}
+    </div>
+{% endfor %}
+    <input type="submit" value="Submit" />
+</form>

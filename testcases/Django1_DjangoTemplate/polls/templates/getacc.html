@@ -1,0 +1,19 @@
+<html>
+<h1>getacc</h1>
+<body>
+    <p>safe: {{ getvars.foo }}
+    <p>unsafe: {{ getvars.foo | safe}}  <!-- CWEID 80 -->
+    {% autoescape off %}
+    <p>unsafe: {{ getvars.foo }}  <!-- CWEID 80 -->
+    <p>unsafe: {{ getvars.foo | safe}}  <!-- CWEID 80 -->
+    {% autoescape on %} 
+        <p>safe: {{ getvars.foo }}
+    {% endautoescape %}
+    {% endautoescape %}
+    <p>safe: {{ getvars.foo }}
+    <p>unsafe: {{ getvars.foo | safe}}  <!-- CWEID 80 -->
+    <p>unsafe: {{ rv | safe}}  <!-- CWEID 80 -->
+    <p>unsafe: {{ rv2 | safe}}  <!-- CWEID 80 -->
+    <p>unsafe: {{ rv3 | safe}}  <!-- CWEID 80 -->
+</body>
+</html>

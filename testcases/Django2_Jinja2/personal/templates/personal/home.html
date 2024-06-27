@@ -1,0 +1,7 @@
+{% extends "personal/header.html" %}
+
+{% block content %}
+<p>Hey {{tainted_name | safe }} , welcome to my website! I am a programmer!</p> {# CWEID 80 #}
+
+{% include "personal/includes/htmlsnippet.html" %}
+{% endblock %}

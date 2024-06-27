@@ -1,0 +1,52 @@
+<html>
+<h1>docycle</h1>
+<body>
+    <p> foo: {{ foo }} </p>
+    <p> foo: {{ foo | safe }} </p>
+    <p> bar: {{ bar }} </p>
+    <p> bar: {{ bar | safe }} </p>  <!-- CWEID 80 -->
+
+    <p>
+        {% cycle bar foo %}
+    </p>
+    <p>
+        {% autoescape off %}
+        {% cycle bar foo %} <!-- CWEID 80 -->
+        {% endautoescape %}
+    </p>
+    <p>
+        {% autoescape off %}
+        {% cycle bar foo %} <!-- CWEID 80 -->
+        {% autoescape on %}
+    </p>
+    <p>
+        {% cycle bar foo %} 
+        {% endautoescape %}
+        {% endautoescape %}
+    </p>
+    <h2>baz:</h2>
+    {% for v in baz %}
+    <p>
+    {{ v }}
+    {{ v | safe }}    <!-- CWEID 80 -->
+    </p>
+    {% endfor %}
+    <h2>included</h2>
+    <p>
+    {% include "included.html" %}
+    </p>
+    <h2>ssi</h2>
+    <p>
+    {% ssi "ssi.html" %}
+    </p>
+
+    <h2>safeseq</h2>
+    <p>
+    {{ baz | join:"," }}
+    </p>
+    <p>
+    {{ baz | safeseq | join:"," }}  <!-- CWEID 80 -->
+    </p>
+    {{ quux }}
+</body>
+</html>

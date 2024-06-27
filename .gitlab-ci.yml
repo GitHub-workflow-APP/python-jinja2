@@ -1,0 +1,23 @@
+image: docker-ro.laputa.veracode.io/agora/buildbox:centos7-m2-gradle-latest
+
+stages:
+    - build
+    - publish
+    
+
+jinja2-build:
+    stage: build
+    artifacts:
+        paths:
+          - testcases/*.zip
+    
+    script:
+        - cd testcases
+        - find . -type d -not -name '.*' -maxdepth 1 -exec zip -r {}.zip {} \;
+    
+django2-publish:
+    stage: publish
+    script:
+        - cd testcases
+        - find . -name '*.zip' -exec curl https://maven.laputa.veracode.io/api/object/snapshots/com/veracode/research/python-jinja2/ --upload-file {} \;
+

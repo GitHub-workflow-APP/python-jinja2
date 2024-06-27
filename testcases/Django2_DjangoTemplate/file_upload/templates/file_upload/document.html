@@ -1,0 +1,10 @@
+{% extends 'file_upload/base.html' %}
+
+{% block content %}
+    <form enctype="multipart/form-data" method="post"> {# FN CWEID 352 #}
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Upload</button>
+    </form>
+
+{% endblock %}
